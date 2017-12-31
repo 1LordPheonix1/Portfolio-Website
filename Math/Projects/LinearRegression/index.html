@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="Libraries/p5.js"></script>
+    <script src="Libraries/p5.dom.js"></script>
+    <script src="Libraries/p5.sound.js"></script>
+    <script src="LinearRegressionModel.js"></script>
+  </head>
+  <style type="text/css">
+    canvas {
+      display: block;
+    }
+  </style>
+  <body>
+    <h1>Welcome to Linear Regression.</h1>
+    <p>Add points to the graph by clicking the grid. These points create a scatter plot.
+      After adding at least 2 points, a line will appear. This line is the 'line of best fit' for the graph.<br>
+      The method for creating this is known as the 'Ordinary Least Squares' algorithm.<br>
+      It calculates the slope and y-intercept using a specific formula.
+
+      The formula is:<br></p>
+    <br>
+    <img src="images/slopeFormula.JPG"> <p> And, </p>
+    <img src="images/yintFormula.JPG">
+    <p>Where:
+      x = specific x-value in a point<br>
+      <img src="images/xmean.JPG"> = Average x-value of all points<br>
+      <img src="images/ymean.JPG"> = Average y-value of all points<br>
+      <img src="images/summation.JPG"> = Summation. Do following expression n times.
+    </p>
+    <p>
+      Add Point with Coordinates (<input type="number" id="xInput" min="0" max="20" step="0.01"></input>, <input type="number" id="yInput" min="0" max="20" step="0.01"></input>)      
+      <button id="addPointBtn" onclick="addPoint()">Add Point</button><br>
+    </p>
+    <p> 
+      The Line of Best fit is: <p id="lineOutput"></p>
+    </p>
+  </body>
+</html>

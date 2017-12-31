@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset="UTF-8">
+	<title>Pheonix Studios Portfolio - Math Projects</title>
+
+	<link href="../CSS/main.css" rel="stylesheet" />
+	<link href="../CSS/projects.css" rel="stylesheet" />
+	<link rel="stylesheet" href="https://s3.amazonaws.com/codecademy-content/projects/bootstrap.min.css">
+
+	<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.7/angular.min.js"></script>
+</head>
+
+<body ng-app="mathApp">
+
+	<!-- Header -->
+	<div class="header">
+		<img src="../Images/Logo.JPG" class="logo" alt="Pheonix Studios Logo" />
+		<h5 class="name">Victor Gumenyuk - Portfolio Website</h5>
+
+		<!-- Navigation Bar -->
+		<ul class="nav">
+			<!-- Home -->
+			<a href="../index.html">
+				<li>Home</li>
+			</a>
+
+			<!-- Website Projects -->
+			<a href="../Websites/index.html">
+				<li>Websites</li>
+			</a>
+
+			<!-- Math Projects -->
+			<a href="index.html">
+				<li>Math</li>
+			</a>
+			<!-- School -->
+		</ul>
+	</div>
+
+	<!-- Jumbotron -->
+	<div class="project_jumbotron" ng-controller="MathController">
+		<div class="col-sm-3" class="project_box" ng-repeat="project in projects">
+			<a ng-click="projectDescription($index)">
+				<img ng-src='{{project.src}}' class="projectImage" />
+			</a>
+		</div>
+
+		<div class="col-sm-3" class="project_box">
+			<img src='../Images/Thumbnail.jpg' />
+		</div>
+
+		<div class="col-sm-3" class="project_box">
+			<img src='../Images/Thumbnail.jpg' />
+		</div>
+	</div>
+
+	<!--Modules -->
+	<script src="../JS/app.js"></script>
+
+	<!-- Controllers -->
+	<script src="../JS/controllers/MathController.js"></script>
+</body>
+
+</html>

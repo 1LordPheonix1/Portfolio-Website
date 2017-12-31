@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8">
+  <title>Pheonix Studios Portfolio - Lorenz Attractor</title>
+  <script src="Libraries/p5.js"></script>
+  <script src="Libraries/p5.dom.js"></script>
+  <script src="Libraries/p5.sound.js"></script>
+  <script src="script.js"></script>
+</head>
+<!-- Styling -->
+<style type="text/css">
+  body {
+    display: block;
+    overflow: inherit;
+    margin: 20px;
+    padding: 0px;
+    position: relative;
+    width: 95%;
+    height: 500px;
+  }
+
+  html {
+    position: relative;
+  }
+
+  a {
+    bottom: 10px;
+    left: 10px;
+    position: absolute;
+  }
+
+  div {
+    background-color: #ff0000;
+    width: 5px;
+    height: 5px;
+    overflow: hidden;
+    display: block;
+    position: absolute;
+    margin:  500px 50%;
+  }
+</style>
+
+<body>
+  <!-- Description -->
+  <h1>Lorenz Attractor</h1>
+  <h3>Equations:</h3>
+  <ul>
+    <li>&Delta;x = &sigma;(y - x) * &Delta;t</li>
+    <li>&Delta;y = (x(&rho; - z) - y) * &Delta;t</li>
+    <li>&Delta;z = (xy - &beta;z) * &Delta;t</li>
+    <li>Where x,y,z are coordinates on the 3D Cartesian Coordinate Plane</li>
+    <li>&Delta; = Greek Letter Delta. &Delta;x,y,z,time symbolizes differences in x,y,z,time</li>
+    <li>&sigma; = Greek Letter Sigma. &sigma; represents the Prandtl Number.</li>
+    <li>&rho; = Greek Letter Rho. &rho; represents the Rayleigh Number.</li>
+    <li>&beta; = Greek Letter Beta. &beha; represents the Geometric Factor.</li>
+  </ul>
+  <script src="script.js"></script>
+</body>

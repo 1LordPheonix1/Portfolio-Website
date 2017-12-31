@@ -1,0 +1,60 @@
+@import url(../CSS/footer.css);
+
+body {
+	display: block;
+	overflow: scroll;
+	margin: 8px;
+	padding: 0px;
+	position: relative;
+}
+
+/* Header */
+.header {
+	height: 10%;
+	width: 100%;
+	display: inline-block;
+	background-color: rgb(227,227,227);
+	margin: 0px;
+	border: 0.5em solid white;
+}
+
+/* Logo / Name */
+.logo {
+	height: 7%;
+	padding: 10px;
+	float: left;
+	width: 7%;
+}
+
+.name {
+	width: 20em;
+	float: left;
+	font-size: 2em;
+	font-family: cursive;
+	font-style: italic;
+	margin: 0px;
+	margin-top: 0.8em;
+	padding: 0px;
+}
+
+/* Nav Bar */
+.nav {
+	height: 10%;
+	width: 47%;
+	padding-right: 1em;
+	display: inline;
+	float: right;
+	margin: 0px;
+	margin-bottom: 5em;
+
+}
+
+.nav li {
+	display: inline;
+	float: right;
+	padding: 0.5em;
+	padding-top: 0.8em;
+	padding-bottom: 1.5em;
+	font-size: 1.7em;
+	text-decoration: underline;
+}

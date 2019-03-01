@@ -20,8 +20,13 @@ website.controller('WebsiteController', ['$scope', function($scope) {
       href: 'https://www.codecademy.com/1LordPheonix12/codebits/8qbpmR',
       id: 3,
       description: "My Math Vacation Project for my 7th Grade Math Teacher, in which my group had to pick a place to go to in the continental U.S. and had to 'have' a Vacation as long as we stayed under the budget of $4,500.",
-    }
-  ];
+    },{
+     // 5 Themes of Geography
+      src: '../Images/Portfolio_Website.jpg',
+      href: '../Projects/8th%20Grade/5-Themes-Of-Geography/index.html',
+      id: 4,
+      description: "My 5 Themes of Geography project that I made for my 8th Grade World Geography teacher, Ms. Barber. It was created in less than a week.",
+    }];
 
   $scope.projectDescription = function(index) {
     var answer = confirm($scope.projects[index].description + ' Go to the project page?');

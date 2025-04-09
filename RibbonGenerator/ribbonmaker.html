@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<style>
+    table, id {
+        border: 1px solid black;
+    }
+    body {
+        background-color: lightgrey;
+    }
+    canvas {
+        display: block;
+        margin-top: 30px;
+    }
+</style>
+<body>
+    <p>Input the comma-separated list of awards here, and press the button.
+    <form id="inputForm" style="height: 125px;">
+        <textarea id="inputText" style="width: 400px; height: 100px;"></textarea></form>
+        <button onclick="generate()">Create Ribbon Rack</button>
+    </form>
+    <canvas id="canvas" width="510" height="500">
+
+    </canvas>
+    <img id="ribbonChartImg" style="" src="ribbonchart.png">
+</body>
+<script>
+    const ribbonList = [
+        "Gold Valor Award",	
+        "Silver Valor Award",	
+        "Outstanding Cadet Training Assistant Award",	
+        "Legion of Valor Bronze Cross for Achievement ",	
+        "Society of Military Engineers Award",	
+        "Field Training Distinguished Graduate Award",	
+        "Field Training 'Ironman' Award",	
+        "Air Force Association Award",	
+        "Daughters of the American Revolution Award",	
+        "American Legion Scholastic Excellence Award",	
+        "American Legion General Military Excellence Award",	
+        "National Defense Industrial Association Award",	
+        "National Defense Transportation Association Award",	
+        "Armed Forces Communications and Electronics Association Award",	
+        "Reserve Officers Association Award",	
+        "Military Officers Association of America Award",	
+        "Veterans of Foreign Wars Award",	
+        "Society of the War of 1812 Award",	
+        "US Daughters of 1812 Award",	
+        "National Sojourners Award",	
+        "Scottish Rite Southern Jurisdiction Award",	
+        "Daughters of Founders and Patriots of America Award",	
+        "Military Order of the Purple Heart Award",	
+        "Sons of the American Revolution Award",	
+        "Militray Order of the World Wars Award",	
+        "American Veterans Award",	
+        "AFROTC Meritorious Service Award",	
+        "AFROTC Commendation Award",	
+        "AFROTC Achievement Award",	
+        "Warrior Spirit Award (Field Training)",
+        "Warrior Spirit Award (Detachment)",	
+        "Academic Honors Award",	
+        "Honor Flight Award (Field Training)",
+        "Honor Flight Award (Detachment)",
+        "Warrior Flight Award (Field Training)",
+        "Warrior Flight Award (Detachment)",
+        "College Scholarship Recipient Ribbon",	
+        "Physical Fitness Award (Field Training)",
+        "Physical Fitness Award (Detachment)",
+        "Recruiting Award",	
+        "AFROTC Expert Marksmanship Ribbon",	
+        "Arnold Air Society Maryland Cup",	
+        "Arnold Air Society Hagan Trophy",	
+        "Arnold Air Society Chennault Trophy",	
+        "Arnold Air Society Area Plaque",	
+        "Arnold Air Society Eagle Trophy",	
+        "Arnold Air Society LBJ Cup",	
+        "Arnold Air Society National Level Award",	
+        "Arnold Air Society Area Level Award",	
+        "Arnold Air Society Squadron Level Award",	
+        "Arnold Air Society Membership Ribbon",	
+        "Silver Wings Membership Ribbon",	
+        "Drill Team Membership Ribbon",	
+        "Color/Honor Guard Membership Ribbon",	
+        "Civil Air Patrol General Carl A. Spaatz Award",	
+        "Civil Air Patrol Amelia Earhart Award",	
+        "Civil Air Patrol General Billy Mitchell Award",	
+        "Pershing Rifles Membership Ribbon",	
+        "Scabbard and Blade Membership Ribbon",	
+    ];
+    const ribbonChart = new Image();
+    // ribbonChart.src = "https://www.1lordpheonix1.github.io/Portfolio-Website/Images/ribbonchart.png";
+    ribbonChart.src = "../Images/ribbonchart.png";
+
+    // duplicate values are at index 30, 33, 35, 38
+    function getData(name) {
+        console.log(name);
+        if(name >= 38) {name -= 4;}
+        else if(name >= 35) {name -= 3;}
+        else if(name >= 33) {name  -= 2;}
+        else if(name >= 30) {name  -= 1;}
+        console.log("final: " + name);
+
+        let i = name % 5;
+        let j = Math.floor(name / 5);
+
+        return [30+(i*distLong), 160+(j*distHigh)];
+    }
+    const awardLength = 170, awardWidth = 45, distLong = 240, distHigh = 120;
+    const imgRows = 11;    
+
+    const canvas = document.getElementById('canvas');
+    const ctx = canvas.getContext('2d');
+
+
+    // let input = "Gold Valor Award,Sons of the American Revolution Award,AFROTC Achievement Award,Academic Honors Award,Honor Flight Award (Detachment),Warrior Flight Award (Detachment),College Scholarship Recipient Ribbon,Physical Fitness Award (Detachment)";
+    function generate() {
+        console.log("clicked");
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        let input = document.getElementById("inputText").value;
+        let inputArr = input.split(",");
+        let numRibbons = inputArr.length;
+        let numRows = Math.floor(numRibbons/3);
+        let topRow = numRibbons%3; // could be 0,1,2
+        let index = 0;
+        
+        // imaging
+
+        // first one is at 30,160, ends at 200,205, so length 170 of each, height 45
+        // second one is at 270, so distance between awards is 240.
+        // second row is at 280, so height distance is 120.
+        // 11 rows of 5 each (+ 4 copies)
+
+        index = 0;
+        
+        if(topRow == 1) {
+            let loc = getData(ribbonList.indexOf(inputArr[index]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, awardLength, 0, awardLength, awardWidth);
+            index += 1;
+        }
+        if(topRow == 2) {
+            let loc = getData(ribbonList.indexOf(inputArr[index]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, awardLength/2, 0, awardLength, awardWidth);
+            loc = getData(ribbonList.indexOf(inputArr[index+1]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, awardLength+awardLength/2, 0, awardLength, awardWidth);
+            index += 2;
+        }
+
+        for(let i=0; i<numRows; i++) {
+            let loc = getData(ribbonList.indexOf(inputArr[index]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, 0, awardWidth*(i+1), awardLength, awardWidth);
+            loc = getData(ribbonList.indexOf(inputArr[index+1]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, awardLength, awardWidth*(i+1), awardLength, awardWidth);
+            loc = getData(ribbonList.indexOf(inputArr[index+2]));
+            ctx.drawImage(ribbonChart, loc[0], loc[1], awardLength, awardWidth, awardLength*2, awardWidth*(i+1), awardLength, awardWidth);
+            index+=3;
+        }
+    };
+</script>

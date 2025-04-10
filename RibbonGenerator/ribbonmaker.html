@@ -106,6 +106,10 @@
     const awardLength = 170, awardWidth = 45, distLong = 240, distHigh = 120;
     const imgRows = 11;    
 
+    for(let i=0; i<ribbonList.length;i++) {
+        ribbonList[i] = ribbonList[i].replaceAll(' ', '');
+    }
+    
     const canvas = document.getElementById('canvas');
     const ctx = canvas.getContext('2d');
 
@@ -115,6 +119,7 @@
         console.log("clicked");
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         let input = document.getElementById("inputText").value;
+        input = input.replaceAll(' ', '');
         let inputArr = input.split(",");
         let numRibbons = inputArr.length;
         let numRows = Math.floor(numRibbons/3);
